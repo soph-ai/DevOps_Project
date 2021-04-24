@@ -10,29 +10,29 @@ pipeline {
     stages {
 
         
-        // stage("Test Front"){
-        //     steps {
-        //         sh '''
-        //                 docker-compose down 
-        //                 docker-compose up -d
-        //                 cd ./frontend
+        stage("Test Front"){
+            steps {
+                sh '''
+                        docker-compose down 
+                        docker-compose up -d
+                        cd ./frontend
                         
-        //                 pytest
-        //         '''
-        //     }
-        // }
+                        pytest
+                '''
+            }
+        }
 
-        //  stage("Test Back"){
-        //     steps {
-        //         sh '''
-        //                 docker ps --all
-        //                 docker-compose up -d
-        //                 cd ./backend
+         stage("Test Back"){
+            steps {
+                sh '''
+                        docker ps --all
+                        docker-compose up -d
+                        cd ./backend
                         
-        //                 pytest
-        //         '''
-        //     }
-        // }
+                        pytest
+                '''
+            }
+        }
         
         stage("Deploy"){
             steps {
