@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  frontend:
+    container_name: frontend
+    image: soph337/frontend_image
+    build: ./frontend
+    ports:
+    - target: 5000
+      published: 5000
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DB: flask-db
+
+  backend:
+    container_name: backend
+    image: soph337/backend_image
+    build: ./backend
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DB: flask-db
+   
+    
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+    - target: 80
+      published: 80
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
