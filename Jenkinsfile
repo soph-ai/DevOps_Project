@@ -34,6 +34,8 @@ pipeline {
         //     }
         // }
         
+
+        // for first run through add: git clone https://github.com/soph-ai/DevOps_Project.git 
         stage("Deploy"){
             steps {
                 sh '''    
