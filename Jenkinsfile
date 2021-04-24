@@ -39,7 +39,7 @@ pipeline {
                 sh '''    
                                  
                         ssh -i '~/.ssh/firstkey' ubuntu@10.0.1.50 -oStrictHostKeyChecking=no << EOF
-                                                                        url: 'https://github.com/soph-ai/DevOps_Project.git'
+                                                                        git clone 'https://github.com/soph-ai/DevOps_Project.git'
                                                                         docker-compose up -d
                                                                         EOF
                 '''                                                    
