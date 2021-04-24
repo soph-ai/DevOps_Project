@@ -4,7 +4,7 @@ WORKDIR /frontend
 # Copy contents into image
 COPY . .
 # install pip dependencies from requirements file
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 ENV MYSQL_ROOT_PASSWORD=password MYSQL_DB=flask-db
 ENV SECRET_KEY=abcdefg
