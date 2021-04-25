@@ -1,5 +1,5 @@
-#Use Python 3.6 as a base image
-FROM python:3.6
+#Use Python 3.8 as a base image
+FROM python:3.8
 WORKDIR /backend
 # Copy contents into image
 COPY . .
