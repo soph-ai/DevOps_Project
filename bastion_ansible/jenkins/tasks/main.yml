@@ -24,8 +24,6 @@
     name: jenkins
     state: started
     enabled: true
-- name: Sleep for 15 seconds and continue with play
-  wait_for: timeout=15
 - name: ssh folder
   file:
     path: /home/jenkins/.ssh
