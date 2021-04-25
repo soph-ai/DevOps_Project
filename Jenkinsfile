@@ -41,7 +41,7 @@ pipeline {
                 sh '''    
                                  
                         ssh -i '~/.ssh/firstkey' ubuntu@10.0.1.50 -oStrictHostKeyChecking=no << EOF
-                                                                        
+                                                                         
                                                                         cd DevOps_Project
                                                                         docker-compose up -d
                                                                         EOF
