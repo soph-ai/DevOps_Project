@@ -10,16 +10,7 @@ variable "user_data" {}
 variable "subnet_group_name" {}
 variable "sec_group_id_sql" {}
 variable "subnet_id"{}
-variable "sec_group_id" {
-  
-}
+variable "sec_group_id" {}
 variable "MYSQL_ROOT_PASSWORD"{}
-
-
-variable "SECRET_KEY" {
-  
-}
-
-variable "NAT_GATEWAY" {
-  
-}
+variable "SECRET_KEY" {}
+variable "NAT_GATEWAY" {}

@@ -56,8 +56,6 @@ resource "aws_route_table_association" "c" {
 
 
 
-
-
 resource "aws_network_interface" "web-server-nic" {
   subnet_id       = aws_subnet.subnet-1.id
   private_ips     = ["10.0.1.50", "10.0.1.51"]
@@ -87,12 +85,8 @@ resource "aws_network_interface" "bastion-nic" {
 }
 
 resource "aws_eip" "one" {
-  vpc                       = true
-  #network_interface         = aws_network_interface.web-server-nic.id
-  #associate_with_private_ip = "10.0.1.50"
-  depends_on = [
-    var.internet_gate
-  ]
+  vpc = true
+  depends_on = [var.internet_gate]
 }
 
 resource "aws_nat_gateway" "gw" {
@@ -104,31 +98,3 @@ resource "aws_nat_gateway" "gw" {
   }
   
 }
-
-# resource "aws_route_table" "prod_route" {
-#   depends_on = [
-#     aws_nat_gateway.gw
-#   ]
-
-#   vpc_id = var.vpc_id
-#   route {
-#     cidr_block = "0.0.0.0/0"
-#     nat_gateway_id = aws_nat_gateway.gw.id
-#   }  
-#   tags = {
-#     Name = "Route table for Gateway"
-#   }
-# }
-
-# resource "aws_route_table" "private-route-table" {
- 
-
-#   vpc_id = var.vpc_id
-#   route {
-#     cidr_block = "0.0.0.0/0"
-#     nat_gateway_id = var.nat_gate_id
-#   }  
-#   tags = {
-#     Name = "Route table for Gateway"
-#   }
-# }

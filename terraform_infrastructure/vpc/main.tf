@@ -5,7 +5,6 @@ resource "aws_vpc" "production" {
   }
 }
 
-
 resource "aws_route_table" "prod_route" {
   vpc_id = aws_vpc.production.id
 
@@ -94,7 +93,6 @@ resource "aws_security_group" "allow_web" {
     Name = "allow_web_traffic"
   }
 }
-
 
 
 resource "aws_security_group" "mysql" {

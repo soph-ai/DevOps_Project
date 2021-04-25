@@ -48,22 +48,22 @@ module "ec2" {
                           sudo apt install ansible -y
                           sudo apt install python3-flask -y
                         
-                          #!/bin/bash
-                          mysql --host=${module.subnets.nat_gate_ip}:3306 --user=admin --password=password testdb <<EOF
+                        #   #!/bin/bash
+                        #   mysql --host=${module.subnets.nat_gate_ip}:3306 --user=admin --password=password testdb <<EOF
                         
-                          CREATE DATABASE testdb;
-                          CREATE DATABASE users;
-                          USE users;
+                        #   CREATE DATABASE testdb;
+                        #   CREATE DATABASE users;
+                        #   USE users;
                           
-                          DROP TABLE IF EXISTS users;
+                        #   DROP TABLE IF EXISTS users;
                           
-                          CREATE TABLE users (
-                            userName varchar(30) NOT NULL
-                          );
+                        #   CREATE TABLE users (
+                        #     userName varchar(30) NOT NULL
+                        #   );
                           
-                          INSERT INTO users VALUES ('Bob'),('Jay'),('Matt'),('Ferg'),('Mo');
+                        #   INSERT INTO users VALUES ('Bob'),('Jay'),('Matt'),('Ferg'),('Mo');
 
-                        EOF>>
+                        # EOF>>
                      EOF
     
     

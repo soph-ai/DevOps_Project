@@ -27,8 +27,6 @@ resource "aws_instance" "prod-instance" {
     network_interface_id = var.net_id_prod
   }
 
-  #user_data = var.user_data
-
   tags = {
     Name = "prod"
   }
@@ -71,8 +69,6 @@ resource "aws_instance" "jenkins-instance" {
     device_index         = 0
     network_interface_id = var.net_id_jenkins
   }
-
- 
 
   tags = {
     Name = "jenkins"
@@ -126,12 +122,6 @@ resource "aws_instance" "bastion-instance" {
   subnet_id = var.subnet_id
   vpc_security_group_ids = [var.sec_group_id]
   
-
-  # network_interface {
-  #   device_index         = 0
-  #   network_interface_id = var.net_id_bastion
-  # }
-  
  user_data = var.user_data
  
   tags = {
@@ -154,6 +144,5 @@ resource "aws_db_instance" "sql-db" {
   db_subnet_group_name = var.subnet_group_name
   vpc_security_group_ids = [ var.sec_group_id_sql ]
   publicly_accessible   = false
-  skip_final_snapshot  = true
-  
+  skip_final_snapshot  = true 
 }

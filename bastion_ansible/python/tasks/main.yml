@@ -26,8 +26,4 @@
 
 - name: install flask
   pip: 
-    name: flask
-
-# - name: install requirements
-#   pip: 
-#     name: requirements.txt
+    name: flask 

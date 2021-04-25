@@ -5,7 +5,7 @@ WORKDIR /backend
 COPY . .
 # install pip dependencies from requirements file
 RUN pip3 install -r requirements.txt
-
+# Set Environment variables 
 ENV MYSQL_ROOT_PASSWORD=password MYSQL_DB=flask-db
 ENV SECRET_KEY=abcdefg
 # Expose correct port

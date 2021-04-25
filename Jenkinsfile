@@ -3,8 +3,6 @@ pipeline {
     environment {
         MYSQL_ROOT_PASSWORD = credentials("MYSQL_ROOT_PASSWORD")
         DOCKER_PASSWORD = credentials("DOCKER_PASSWORD")
-        // DATABASE_URI = credentials("DATABASE_URI")
-        // TEST_DATABASE_URI = credentials("TEST_DATABASE_URI")
         SECRET_KEY = credentials("SECRET_KEY")
     }
     stages {
@@ -35,14 +33,14 @@ pipeline {
         // }
         
 
-        // for first run through add: git clone https://github.com/soph-ai/DevOps_Project.git 
+        // for first run through add: git clone https://github.com/QACTrainers/soph-ai_assessment.git
         stage("Deploy"){
             steps {
                 sh '''    
                                  
                         ssh -i '~/.ssh/firstkey' ubuntu@10.0.1.50 -oStrictHostKeyChecking=no << EOF
                                                                         sudo apt update -y 
-                                                                        cd DevOps_Project
+                                                                        cd soph-ai_assessment
                                                                         git pull 
                                                                         docker-compose up -d
                                                                         EOF

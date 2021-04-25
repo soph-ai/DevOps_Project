@@ -25,8 +25,6 @@ output "sec_group_id_sql" {
   
 }
 
-
-
 output "route_id_prod" {
     value = aws_route_table.prod_route.id
 }
