@@ -8,7 +8,8 @@
       - lsb-release
       - software-properties-common
       - python3-pip
-      - gnupg-agent 
+      - gnupg-agent
+      state: latest 
       update_cache: true 
   - name: Add docker gpg key 
     apt_key:
