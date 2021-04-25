@@ -1,0 +1,32 @@
+- name: Install python3
+  apt:
+    pkg:
+    - python3
+    - python3-virtualenv
+    - python3-dev
+    - virtualenv
+    - pytest
+    state: present
+    update_cache: true
+
+- name: Install python-pip
+  apt:
+    pkg:
+    - python3-pip
+    - curl
+    state: present
+    update_cache: true
+- name: pytest
+  pip:
+    name: pytest
+- name: install nginx
+  yum: name=nginx state=installed
+
+- name: install pip
+  yum: name=python-pip state=installed
+
+- name: install flask
+  pip: name=flask
+
+- name: install requirements
+  pip: requirements.txt

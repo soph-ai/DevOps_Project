@@ -1,0 +1,18 @@
+all:
+  vars:
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: '~/.ssh/firstkey'
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+  children:
+  # 
+    production:
+      hosts:
+        10.0.1.50:
+         
+   
+    test:
+      hosts: 
+         10.0.1.53:
+    jenkins:
+      hosts: 
+         10.0.1.54:

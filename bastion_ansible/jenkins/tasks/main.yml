@@ -1,0 +1,51 @@
+- name: install Java 8
+  apt:
+    name: openjdk-8-jdk
+    state: present
+    update_cache: yes
+
+- name: add jenkins gpg key
+  apt_key:
+    url: https://pkg.jenkins.io/debian/jenkins.io.key
+    state: present
+
+- name: add jenkins repository
+  apt_repository:
+    repo: deb http://pkg.jenkins.io/debian-stable binary/
+    state: present
+
+- name: install Jenkins 
+  apt:
+    name: jenkins
+    state: present
+    update_cache: yes
+- name: Start & Enable Jenkins
+  systemd:
+    name: jenkins
+    state: started
+    enabled: true
+- name: Sleep for 15 seconds and continue with play
+  wait_for: timeout=15
+- name: ssh folder
+  file:
+    path: /home/jenkins/.ssh
+    state: directory
+    mode: "0700"
+    owner: jenkins
+    group: jenkins
+
+- name: install private key
+  copy:
+    src: ~/.ssh/firstkey
+    dest: /home/jenkins/.ssh/firstkey
+    owner: jenkins
+    group: jenkins
+    mode: u=rw,g=,o=
+
+- name: Get initial password Jenkins
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+- name: Print initial password Jenkins
+  debug:
+    var: result.stdout

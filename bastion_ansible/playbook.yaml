@@ -1,0 +1,21 @@
+- hosts: test
+  become: true
+  roles:
+  - docker
+  - python
+- hosts: production
+  
+  tasks:
+    - name: Updates apt cache
+      action: apt update_cache=true
+  become: true
+  roles:
+  - docker
+  - python
+  
+- hosts: jenkins
+  become: true
+  roles:
+  - docker
+  - jenkins
+  - python
