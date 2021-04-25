@@ -41,8 +41,9 @@ pipeline {
                 sh '''    
                                  
                         ssh -i '~/.ssh/firstkey' ubuntu@10.0.1.50 -oStrictHostKeyChecking=no << EOF
-                                                                        
+                                                                        sudo apt update -y 
                                                                         cd DevOps_Project
+                                                                        git pull 
                                                                         docker-compose up -d
                                                                         EOF
                 '''                                                    

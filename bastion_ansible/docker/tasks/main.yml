@@ -40,9 +40,6 @@
   
   
   - name: Download docker-compose {{ docker_compose_version }}
-    # pip: name=psycopg2 virtualenv=/path/to/my/venv
-    # environment:
-    #   PATH: /usr/local/bin/:{{ ansible_env.PATH }}
     get_url:
       url : https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
       dest: ~/docker-compose
